@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49fbde37-cbf5-4bae-a4b9-ae71ab61f2c3" name="Changes" comment="" />
+    <list default="true" id="49fbde37-cbf5-4bae-a4b9-ae71ab61f2c3" name="Changes" comment="a" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,6 +53,14 @@
       <option name="presentableId" value="Default" />
       <updated>1700670411709</updated>
     </task>
+    <task id="LOCAL-00001" summary="a">
+      <created>1700948497627</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700948497627</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -70,5 +78,7 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Neuronova_sit" />
     </ignored-roots>
+    <MESSAGE value="a" />
+    <option name="LAST_COMMIT_MESSAGE" value="a" />
   </component>
 </project>
