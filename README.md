@@ -1,2 +1,2 @@
-# Neuronova_sit
- Zdrojový kod k maturitní práci
+# Neuronová síť
+ Tento repozitář obsahuje zdrojový kód praktické části mé závěrečné práce.
