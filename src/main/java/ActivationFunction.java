@@ -25,6 +25,7 @@ public class ActivationFunction {
                 return  Math.tanh(-neuronOutput);
             case 3:
                 return Math.max(0,neuronOutput);
+
         }
         return 0;
     }
