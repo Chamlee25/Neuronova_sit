@@ -14,7 +14,18 @@ public class ActivationFunction {
             case 1 -> (1 / (1 + Math.exp(-neuronOutput)));
             case 2 -> Math.tanh(-neuronOutput);
             case 3 -> Math.max(0, neuronOutput);
-            default -> 0;
+            case 4 -> throw new IllegalArgumentException();
+            default -> throw new IllegalStateException();
         };
     }
+
+    public double activate(double neuronOutput, double[] neuronsOutput){
+        double normalizedSum = 0;
+        for(int i = 0; i< neuronsOutput.length; i++){
+            normalizedSum += Math.exp(neuronsOutput[i]);
+        }
+        return Math.exp(neuronOutput) / normalizedSum;
+
+    }
+
 }
