@@ -24,4 +24,18 @@ public class Layer {
         return layerMap.get(ID);
     }
 
+    public double[] activateLastLayer(double[] inputs){
+        if(inputs.length != neurons[0].weights.length)
+            throw new IndexOutOfBoundsException();
+        double[] results = new double[neurons.length];
+        double[] activatedResults = new double[neurons.length];
+        for(int i =0; i<neurons.length; i++){
+            results[i] = neurons[i].think(inputs);
+        }
+        for(int i =0; i<neurons.length; i++){
+            activatedResults[i] = neurons[i].activationFunction.activate(results[i],results);
+        }
+        return activatedResults;
+    }
+
 }

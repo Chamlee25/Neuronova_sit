@@ -9,7 +9,14 @@ public class ActivationFunction {
             case "softmax" -> AF_ID = 4;
         }
     }
-    public double activate(double neuronOutput){
+    public double activate(double neuronOutput, double... neuronsOutput){
+        if(neuronsOutput.length>0){
+            double normalizedSum = 0;
+            for(int i = 0; i< neuronsOutput.length; i++){
+                normalizedSum += Math.exp(neuronsOutput[i]);
+            }
+            return Math.exp(neuronOutput) / normalizedSum;
+        }
         return switch (AF_ID) {
             case 1 -> (1 / (1 + Math.exp(-neuronOutput)));
             case 2 -> Math.tanh(-neuronOutput);
@@ -19,13 +26,6 @@ public class ActivationFunction {
         };
     }
 
-    public double activate(double neuronOutput, double[] neuronsOutput){
-        double normalizedSum = 0;
-        for(int i = 0; i< neuronsOutput.length; i++){
-            normalizedSum += Math.exp(neuronsOutput[i]);
-        }
-        return Math.exp(neuronOutput) / normalizedSum;
 
-    }
 
 }
