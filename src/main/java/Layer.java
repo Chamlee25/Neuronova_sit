@@ -2,40 +2,46 @@ import java.util.HashMap;
 
 public class Layer {
     public Neuron[] neurons;
+    public int weightCount;
+    public ActivationFunction activationFunction;
 
-    private static HashMap<int,Layer> layerMap = new HashMap<int, Layer>();
-    public int layerID;
-    /** ID
+    /* ID
      * 0 -> input layer
      * 1 -> hidden layer
      * 2 -> output layer
      */
+    public int layerID;
 
-    public Layer(int ID, int NeuronCount, String activationFunctionName){
-        layerMap.put(ID,this);
+
+    public Layer(int ID, int NeuronCount, int weightCount, String activationFunctionName){
+        this.weightCount = weightCount;
+        this.layerID = ID;
+        this.activationFunction = new ActivationFunction(activationFunctionName);
         neurons = new Neuron[NeuronCount];
         for(int i = 0; i< NeuronCount; i++){
-            neurons[i] = new Neuron(activationFunctionName, getLayer(ID-1).neurons.length);
+            neurons[i] = new Neuron(weightCount);
         }
-        this.layerID = ID;
-    }
 
-    public static Layer getLayer(int ID){
-        return layerMap.get(ID);
     }
-
-    public double[] activateLastLayer(double[] inputs){
-        if(inputs.length != neurons[0].weights.length)
+    public double[] activateLayer(double[] inputs){
+        //constant
+        int size = inputs.length;
+        //checking if neuron has right number of inputs
+        if(size != neurons[0].weights.length)
             throw new IndexOutOfBoundsException();
-        double[] results = new double[neurons.length];
-        double[] activatedResults = new double[neurons.length];
-        for(int i =0; i<neurons.length; i++){
-            results[i] = neurons[i].think(inputs);
+        double[] outputs = new double[size];
+        for(int i =0; i<size; i++){
+            outputs[i] = neurons[i].think(inputs);
         }
-        for(int i =0; i<neurons.length; i++){
-            activatedResults[i] = neurons[i].activationFunction.activate(results[i],results);
+        if(activationFunction.AF_ID!=4){
+            for(int i =0; i<size; i++){
+                outputs[i] = activationFunction.activate(outputs[i]);
+            }
+            return outputs;
         }
-        return activatedResults;
+        for(int i =0; i<size; i++){
+            outputs[i] = activationFunction.activate(outputs[i],outputs);
+        }
+        return outputs;
     }
-
 }
