@@ -2,6 +2,12 @@ public class Neuron {
     public double bias;
     public double[] weights;
 
+    public double[][] weightsIncreaseData;
+                    // [ weight number ] [10 values which average am gonna use]
+    public double error;
+
+
+
 
 
     public Neuron(int weightCount){
@@ -10,6 +16,7 @@ public class Neuron {
         for(int i = 0; i<weightCount; i++){
             weights[i] = (Math.random() * 2) - 1;
         }
+
 
     }
     public double think(double[] previousInputs) throws IndexOutOfBoundsException{
@@ -21,5 +28,12 @@ public class Neuron {
             result += previousInputs[i] * weights[i];
         }
         return result;
+    }
+
+    public void updateLastNeuron(double error, double learningRate, double[] input){
+        for(int i =0; i< 10; i++){
+            weights[i] += error*input[i]*learningRate;
+        }
+        bias += error*learningRate;
     }
 }

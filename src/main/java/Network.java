@@ -1,31 +1,60 @@
 public class Network {
-    public int layerCount;
-    public Layer[] layers;
-    public Network(int layerCount, int[] neuronCount){
-        layers = new Layer[layerCount];
-        this.layerCount = layerCount;
+
+    public Layer firstLayer;
+    public Layer secondLayer;
+    public Layer thirdLayer;
+
+    double[] data2;
+    public Network(){
+
+
 
         /* first layer
           neuron -> only 1 weight
           activation -> sigmoid / tanh
          */
-        layers[0] = new Layer(0,neuronCount[0],1,"sigmoid");
+        firstLayer = new Layer(784,1);
 
         /* hidden layers
          * neuron -> number of weight = previous layer neuron count
          * activation -> relu
          */
 
-        for(int i =1; i<layerCount-1; i++){
-            layers[i] = new Layer(i,neuronCount[i],neuronCount[i-1],"relu");
-        }
+
+        secondLayer = new Layer(10,784);
+
 
         /* last layer
          * neuron -> number of weight = previous layer neuron count
          * activation -> softmax
          */
 
-        layers[layerCount-1] = new Layer(layerCount-1,neuronCount[layerCount-1],neuronCount[layerCount-2],"softmax");
+        thirdLayer = new Layer(10,10);
+    }
+
+    public double[] predict(double[] inputData) {
+        if(inputData.length != firstLayer.neurons.length)
+            throw new IllegalArgumentException();
+        double[] data1 = firstLayer.firstLayerThink(inputData);
+        data2 = secondLayer.secondLayerThink(data1);
+        double[] data3 = thirdLayer.thirdLayerThink(data2);
+        return data3;
+
+    }
+
+    public double[] learn(double[] inputData, double[] expectedData, double learningRate){
+        double[] resultData = predict(inputData);
+        double[] errors = new double[10]; // 10 = resultData.lenght
+        for(int i =0; i<10; i++){
+            errors[i] = Math.pow(expectedData[i] - resultData[i],2);
+        }
+        for(int i =0; i<10; i++){
+            thirdLayer.neurons[i].updateLastNeuron(errors[i],learningRate,data2);
+        }
+        return predict(inputData);
+
+
+
     }
 
 

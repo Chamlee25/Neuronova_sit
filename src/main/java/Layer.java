@@ -35,7 +35,7 @@ public class Layer {
         return result;
 
     }
-    public double[] secondlayertThink(double[] inputs){
+    public double[] secondLayerThink(double[] inputs){
         if(total_data_required != inputs.length)
             throw new IndexOutOfBoundsException();
         double[] outputs = new double[layer_size];
