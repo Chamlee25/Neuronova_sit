@@ -45,6 +45,7 @@ public class Network {
     }
 
     public double[] learn(double[] inputData, double[] expectedData, double learningRate){
+        predict(inputData);
         backPropError(expectedData);
         updateWeight(learningRate,inputData);
         return predict(inputData);
