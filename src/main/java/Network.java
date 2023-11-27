@@ -1,3 +1,5 @@
+import java.io.*;
+
 public class Network {
 
     public Layer firstLayer;
@@ -33,6 +35,53 @@ public class Network {
 
         thirdLayer = new Layer(10,10);
     }
+
+    //load saved network from file
+
+    public Network(String fileName) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        String line = br.readLine();
+
+        String[] layerInfo = line.split(";");
+        String[] firstLayerInfo = layerInfo[0].split(",");
+        String[] secondLayerInfo = layerInfo[1].split(",");
+        String[] thirdLayerInfo = layerInfo[2].split(",");
+        // Load first layer
+        firstLayer = new Layer(784,1);
+        for (int i = 0; i < 784; i++) {
+            String[] neuronInfo = firstLayerInfo[i].split(":");
+            double weight = Double.parseDouble(neuronInfo[0]);
+            double bias = Double.parseDouble(neuronInfo[1]);
+            firstLayer.neurons[i].weights[0]=weight;
+            firstLayer.neurons[i].bias = bias;
+        }
+        // Load second layer
+        secondLayer = new Layer(10,784);
+        for (int neuron = 0; neuron < 10; neuron++) {
+            String[] neuronInfo = secondLayerInfo[neuron].split(":");
+            for (int weight = 0; weight < 784; weight++) {
+                secondLayer.neurons[neuron].weights[weight] = Double.parseDouble(neuronInfo[weight]);
+            }
+            secondLayer.neurons[neuron].bias = Double.parseDouble(neuronInfo[784]);
+        }
+
+
+        // Load third layer
+        thirdLayer = new Layer(10,10);
+        for (int neuron = 0; neuron < 10; neuron++) {
+            String[] neuronInfo = thirdLayerInfo[neuron].split(":");
+            for (int j = 0; j < 10; j++) {
+                thirdLayer.neurons[neuron].weights[j] = Double.parseDouble(neuronInfo[j]);
+            }
+            thirdLayer.neurons[neuron].bias = Double.parseDouble(neuronInfo[10]);
+        }
+        br.close();
+
+    }
+
+
+
+
 
     public double[] predict(double[] inputData) {
         if(inputData.length != firstLayer.neurons.length)
