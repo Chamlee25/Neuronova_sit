@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49fbde37-cbf5-4bae-a4b9-ae71ab61f2c3" name="Changes" comment="Completely reworked system. Made it easier. Can now show some result.">
+    <list default="true" id="49fbde37-cbf5-4bae-a4b9-ae71ab61f2c3" name="Changes" comment="Second learning prototype, seems to be working better?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ActivationFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ActivationFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Layer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Neuron.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Neuron.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,16 +43,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -67,7 +64,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+    <configuration name="Application" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Neuronova_sit" />
       <method v="2">
@@ -196,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701030302536</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="First learning prototype (not working as it should)">
+      <created>1701035873174</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1701035873174</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -242,7 +246,9 @@
     <MESSAGE value="Added gitignore, added MNIST source files, not pushed to server (too big)" />
     <MESSAGE value="Added Mnist, Mnist Loader and Mnist Viewer classes." />
     <MESSAGE value="Completely reworked system. Made it easier. Can now show some result." />
-    <option name="LAST_COMMIT_MESSAGE" value="Completely reworked system. Made it easier. Can now show some result." />
+    <MESSAGE value="First learning prototype (not working as it should)" />
+    <MESSAGE value="Second learning prototype, seems to be working better?" />
+    <option name="LAST_COMMIT_MESSAGE" value="Second learning prototype, seems to be working better?" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
