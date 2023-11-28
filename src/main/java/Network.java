@@ -66,7 +66,6 @@ public class Network {
         secondLayerResultData = secondLayer.secondLayerThink(firstLayerResultData);
         thirdLayerResultData = thirdLayer.thirdLayerThink(secondLayerResultData);
         return thirdLayerResultData;
-
     }
 
     public double[] learn(double[] inputData, double[] expectedData, double learningRate){
@@ -74,12 +73,9 @@ public class Network {
         backPropError(expectedData);
         updateWeight(learningRate,inputData);
         return predict(inputData);
-
-
-
     }
 
-    public void backPropError(double[] expectedData){
+    private void backPropError(double[] expectedData){
         //first layer error
         for(int neuron =0; neuron<10; neuron++){
             thirdLayer.neurons[neuron].error = (thirdLayerResultData[neuron]-expectedData[neuron]) * ActivationFunction.sigmoidDerivative(thirdLayerResultData[neuron]);
@@ -102,7 +98,7 @@ public class Network {
         }
     }
 
-    public void updateWeight(double learningRate, double[] inputData){
+    private void updateWeight(double learningRate, double[] inputData){
         //third layer
         for(int neuron = 0; neuron<10; neuron++){
             double delta;
