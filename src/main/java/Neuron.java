@@ -1,14 +1,7 @@
 public class Neuron {
     public double bias;
     public double[] weights;
-
-    public double[][] weightsIncreaseData;
-                    // [ weight number ] [10 values which average am gonna use]
     public double error;
-
-
-
-
 
     public Neuron(int weightCount){
         this.bias = Math.random()-0.5;
@@ -30,10 +23,5 @@ public class Neuron {
         return result;
     }
 
-    public void updateLastNeuron(double error, double learningRate, double[] input){
-        for(int i =0; i< 10; i++){
-            weights[i] += error*input[i]*learningRate;
-        }
-        bias += error*learningRate;
-    }
+
 }
