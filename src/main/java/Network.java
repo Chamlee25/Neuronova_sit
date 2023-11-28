@@ -1,20 +1,17 @@
 import java.io.*;
 
 public class Network {
-
     public Layer firstLayer;
     public Layer secondLayer;
     public Layer thirdLayer;
-
-    double[] data1;
-    double[] data2;
-    double[] data3;
+    double[] firstLayerResultData;
+    double[] secondLayerResultData;
+    double[] thirdLayerResultData;
     public Network(){
         firstLayer = new Layer(784,1);
         secondLayer = new Layer(10,784);
         thirdLayer = new Layer(10,10);
     }
-
     //load saved network from file
 
     public Network(String fileName) throws IOException {
@@ -65,10 +62,10 @@ public class Network {
     public double[] predict(double[] inputData) {
         if(inputData.length != firstLayer.neurons.length)
             throw new IllegalArgumentException();
-        data1 = firstLayer.firstLayerThink(inputData);
-        data2 = secondLayer.secondLayerThink(data1);
-        data3 = thirdLayer.thirdLayerThink(data2);
-        return data3;
+        firstLayerResultData = firstLayer.firstLayerThink(inputData);
+        secondLayerResultData = secondLayer.secondLayerThink(firstLayerResultData);
+        thirdLayerResultData = thirdLayer.thirdLayerThink(secondLayerResultData);
+        return thirdLayerResultData;
 
     }
 
@@ -85,7 +82,7 @@ public class Network {
     public void backPropError(double[] expectedData){
         //first layer error
         for(int neuron =0; neuron<10; neuron++){
-            thirdLayer.neurons[neuron].error = (data3[neuron]-expectedData[neuron]) * ActivationFunction.sigmoidDerivative(data3[neuron]);
+            thirdLayer.neurons[neuron].error = (thirdLayerResultData[neuron]-expectedData[neuron]) * ActivationFunction.sigmoidDerivative(thirdLayerResultData[neuron]);
         }
         //second layer error
         for(int neuron = 0; neuron<10; neuron++){
@@ -93,7 +90,7 @@ public class Network {
             for(int nextNeuron =0; nextNeuron<10; nextNeuron++){
                 sum += thirdLayer.neurons[nextNeuron].weights[neuron] * thirdLayer.neurons[nextNeuron].error;
             }
-            secondLayer.neurons[neuron].error = sum * ActivationFunction.reluDerivative(data2[neuron]);
+            secondLayer.neurons[neuron].error = sum * ActivationFunction.reluDerivative(secondLayerResultData[neuron]);
         }
         //third layer error
         for(int neuron = 0; neuron<784; neuron++){
@@ -101,7 +98,7 @@ public class Network {
             for(int nextNeuron =0; nextNeuron<10; nextNeuron++){
                 sum += secondLayer.neurons[nextNeuron].weights[neuron] * secondLayer.neurons[nextNeuron].error;
             }
-            firstLayer.neurons[neuron].error = sum * ActivationFunction.sigmoidDerivative(data1[neuron]);
+            firstLayer.neurons[neuron].error = sum * ActivationFunction.sigmoidDerivative(firstLayerResultData[neuron]);
         }
     }
 
@@ -110,7 +107,7 @@ public class Network {
         for(int neuron = 0; neuron<10; neuron++){
             double delta;
             for(int prevNeuron = 0; prevNeuron <10; prevNeuron++){
-                delta = - learningRate * data2[prevNeuron] * thirdLayer.neurons[neuron].error;
+                delta = - learningRate * secondLayerResultData[prevNeuron] * thirdLayer.neurons[neuron].error;
                 thirdLayer.neurons[neuron].weights[prevNeuron] += delta;
             }
             delta = -learningRate * thirdLayer.neurons[neuron].error;
@@ -120,7 +117,7 @@ public class Network {
         for(int neuron = 0; neuron<10; neuron++){
             double delta;
             for(int prevNeuron = 0; prevNeuron <784; prevNeuron++){
-                delta = - learningRate * data1[prevNeuron] * secondLayer.neurons[neuron].error;
+                delta = - learningRate * firstLayerResultData[prevNeuron] * secondLayer.neurons[neuron].error;
                 secondLayer.neurons[neuron].weights[prevNeuron] += delta;
             }
             delta = -learningRate * secondLayer.neurons[neuron].error;
