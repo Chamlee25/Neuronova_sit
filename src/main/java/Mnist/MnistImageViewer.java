@@ -8,6 +8,9 @@ public class MnistImageViewer {
 
     public static void main(String[] args) throws IOException {
         MnistLoader m = new MnistLoader(0);
+        for(int i =0; i<98; i++){
+            m.getNextMnist();
+        }
         double[] imageData = m.getNextMnist().data;
         int enlargedSize = 40;
         BufferedImage enlargedImage = new BufferedImage(28 * enlargedSize, 28 * enlargedSize, BufferedImage.TYPE_INT_RGB);

@@ -11,7 +11,6 @@ public class Layer {
         }
         layerSize = neurons.length;
     }
-
     public double[] firstLayerThink(double[] inputs){
         if(inputs.length != neurons.length){
             throw new IllegalArgumentException();
@@ -25,7 +24,6 @@ public class Layer {
             result[i] = ActivationFunction.sigmoid(result[i]);
         }
         return result;
-
     }
     public double[] secondLayerThink(double[] inputs){
         if(weightCount != inputs.length)

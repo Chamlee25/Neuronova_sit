@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Network network = new Network("86.18.net");
+        Network network = new Network();
 
         MnistLoader trainer = new MnistLoader(0);
         //train

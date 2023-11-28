@@ -14,7 +14,6 @@ public class Neuron {
     public double think(double[] previousInputs) throws IndexOutOfBoundsException{
         if(previousInputs.length != weights.length)
             throw new IndexOutOfBoundsException(); // if Neuron receives more or less input than can handle
-
         double result = bias;
         for(int i =0; i<previousInputs.length;i++){
             result += previousInputs[i] * weights[i];
