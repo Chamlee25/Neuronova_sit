@@ -1,23 +1,16 @@
 public class Layer {
     public Neuron[] neurons;
     public int weightCount;
-
-
-    private final int layer_size;
-    private final int  total_data_required;
-
-
-
+    private final int layerSize;
+    private final int totalDataRequired;
     public Layer(int NeuronCount, int weightCount){
-
         this.weightCount = weightCount;
         neurons = new Neuron[NeuronCount];
         for(int i = 0; i< NeuronCount; i++){
             neurons[i] = new Neuron(weightCount);
         }
-        layer_size = neurons.length;
-        total_data_required = neurons[0].weights.length;
-
+        layerSize = neurons.length;
+        totalDataRequired = neurons[0].weights.length;
     }
 
     public double[] firstLayerThink(double[] inputs){
@@ -36,23 +29,23 @@ public class Layer {
 
     }
     public double[] secondLayerThink(double[] inputs){
-        if(total_data_required != inputs.length)
+        if(totalDataRequired != inputs.length)
             throw new IndexOutOfBoundsException();
-        double[] outputs = new double[layer_size];
-        for(int i =0; i<layer_size; i++){
+        double[] outputs = new double[layerSize];
+        for(int i = 0; i< layerSize; i++){
             outputs[i] = neurons[i].think(inputs);
         }
-        for(int i =0; i<layer_size; i++){
+        for(int i = 0; i< layerSize; i++){
             outputs[i] = ActivationFunction.relu(outputs[i]);
         }
         return outputs;
     }
 
     public double[] thirdLayerThink(double[] inputs){
-        if(total_data_required != inputs.length)
+        if(totalDataRequired != inputs.length)
             throw new IndexOutOfBoundsException();
-        double[] outputs = new double[layer_size];
-        for(int i =0; i<layer_size; i++){
+        double[] outputs = new double[layerSize];
+        for(int i = 0; i< layerSize; i++){
             outputs[i] = neurons[i].think(inputs);
         }
         outputs = ActivationFunction.softmax(outputs);

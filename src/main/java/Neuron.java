@@ -9,9 +9,8 @@ public class Neuron {
         for(int i = 0; i<weightCount; i++){
             weights[i] = (Math.random() * 2) - 1;
         }
-
-
     }
+
     public double think(double[] previousInputs) throws IndexOutOfBoundsException{
         if(previousInputs.length != weights.length)
             throw new IndexOutOfBoundsException(); // if Neuron receives more or less input than can handle
