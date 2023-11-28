@@ -1,21 +1,12 @@
 package Mnist;
-
 import java.io.*;
-
 public class MnistLoader {
-    /* type
-    0 = train
-    1 = test
-     */
-
     BufferedReader br;
     String line;
-
     public MnistLoader(int type) throws IOException {
         br = new BufferedReader(new FileReader("src/main/Resources/" + (type==0?"mnist_train.csv":"mnist_test.csv")));
         line = br.readLine(); //skip header line
     }
-
     public Mnist getNextMnist() throws IOException {
         if((line = br.readLine()) != null){
             String[] values = line.split(",");
@@ -28,8 +19,6 @@ public class MnistLoader {
         }
         return null;
     }
-
-
 }
 
 
