@@ -10,29 +10,8 @@ public class Network {
     double[] data2;
     double[] data3;
     public Network(){
-
-
-
-        /* first layer
-          neuron -> only 1 weight
-          activation -> sigmoid / tanh
-         */
         firstLayer = new Layer(784,1);
-
-        /* hidden layers
-         * neuron -> number of weight = previous layer neuron count
-         * activation -> relu
-         */
-
-
         secondLayer = new Layer(10,784);
-
-
-        /* last layer
-         * neuron -> number of weight = previous layer neuron count
-         * activation -> softmax
-         */
-
         thirdLayer = new Layer(10,10);
     }
 

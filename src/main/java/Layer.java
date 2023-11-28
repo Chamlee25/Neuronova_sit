@@ -2,7 +2,7 @@ public class Layer {
     public Neuron[] neurons;
     public int weightCount;
     private final int layerSize;
-    private final int totalDataRequired;
+
     public Layer(int NeuronCount, int weightCount){
         this.weightCount = weightCount;
         neurons = new Neuron[NeuronCount];
@@ -10,7 +10,6 @@ public class Layer {
             neurons[i] = new Neuron(weightCount);
         }
         layerSize = neurons.length;
-        totalDataRequired = neurons[0].weights.length;
     }
 
     public double[] firstLayerThink(double[] inputs){
@@ -29,7 +28,7 @@ public class Layer {
 
     }
     public double[] secondLayerThink(double[] inputs){
-        if(totalDataRequired != inputs.length)
+        if(weightCount != inputs.length)
             throw new IndexOutOfBoundsException();
         double[] outputs = new double[layerSize];
         for(int i = 0; i< layerSize; i++){
@@ -42,7 +41,7 @@ public class Layer {
     }
 
     public double[] thirdLayerThink(double[] inputs){
-        if(totalDataRequired != inputs.length)
+        if(weightCount != inputs.length)
             throw new IndexOutOfBoundsException();
         double[] outputs = new double[layerSize];
         for(int i = 0; i< layerSize; i++){
