@@ -5,18 +5,33 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+
+
 public class Main {
+    private static double time =0;
     public static void main(String[] args) throws IOException {
-        Network network = new Network();
+        for(int i =0; i< 1000; i++){
+            Network n1 = new Network();
+            // train(n1);
+            train(n1);
+            double accuracy = test(n1);
 
-        MnistLoader trainer = new MnistLoader(0);
-        //train
+            System.out.println(time);
+            save(n1,accuracy + ".net");
 
-        for(int i =0; i<60000; i++){
-            Mnist m = trainer.getNextMnist();
-            network.learn(m.data,m.actualValues,0.01);
+
+            {   // get not chaning file
+                Network n2 = new Network(accuracy + ".net");
+                File f = new File(accuracy + ".net");
+                f.delete();
+                accuracy = test(n2);
+                save(n2, accuracy + ".net");
+                System.out.println(accuracy);
+            }
         }
+    }
 
+    private static double test(Network network) throws IOException {
         //test accuracy
         double right =0;
         MnistLoader tester = new MnistLoader(1);
@@ -27,16 +42,20 @@ public class Main {
                 right++;
             }
         }
-        double accuracy = right/100;
-        System.out.println(accuracy);
-        //save(network,accuracy + ".net");
+        return right/100;
+    }
+
+    static void train(Network n) throws IOException {
+        //train
+        MnistLoader trainer = new MnistLoader(0);
+        double start = System.currentTimeMillis();
+        for(int i =0; i<60000; i++){
+            Mnist m = trainer.getNextMnist();
+            n.learn(m.data,m.actualValues,0.01);
+        }
 
 
-
-
-
-
-
+        time = System.currentTimeMillis() - start;
     }
 
     private static int highestValue(double[] result) {
@@ -56,25 +75,24 @@ public class Main {
         StringBuilder firstLayerSB = new StringBuilder();
         for(int i =0; i<784; i++){
             firstLayerSB.append(n.firstLayer.neurons[i].weights[0]).append(":");
-            firstLayerSB.append(n.firstLayer.neurons[i].bias).append(",");
+            firstLayerSB.append(n.firstLayer.neurons[i].bias).append("\n");
         }
         
         StringBuilder secondLayerSB = new StringBuilder();
-        for(int i =0; i<10; i++){
-            for(int j =0; j<784; j++){
-                secondLayerSB.append(n.secondLayer.neurons[i].weights[j]).append(":");
+        for(int neuron =0; neuron<10; neuron++){
+            for(int weight =0; weight<784; weight++){
+                secondLayerSB.append(n.secondLayer.neurons[neuron].weights[weight]).append(",");
             }
-            secondLayerSB.append(n.firstLayer.neurons[i].bias).append(",");
-
-
+            secondLayerSB.append(":").append(n.firstLayer.neurons[neuron].bias).append("\n");
         }
-
+        
+        
         StringBuilder thirdLayerSB = new StringBuilder();
-        for(int i =0; i<10; i++){
-            for(int j =0; j<10; j++){
-                thirdLayerSB.append(n.thirdLayer.neurons[i].weights[j]).append(":");
+        for(int neuron =0; neuron<10; neuron++){
+            for(int weight =0; weight<10; weight++){
+                thirdLayerSB.append(n.thirdLayer.neurons[neuron].weights[weight]).append(",");
             }
-            thirdLayerSB.append(n.thirdLayer.neurons[i].bias).append(",");
+            thirdLayerSB.append(":").append(n.thirdLayer.neurons[neuron].bias).append("\n");
         }
         StringBuilder sb = new StringBuilder();
         sb.append(firstLayerSB).append(";").append(secondLayerSB).append(";").append(thirdLayerSB);

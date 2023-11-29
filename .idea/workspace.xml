@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49fbde37-cbf5-4bae-a4b9-ae71ab61f2c3" name="Changes" comment="Removed spaces. Refactoring variables.">
+    <list default="true" id="49fbde37-cbf5-4bae-a4b9-ae71ab61f2c3" name="Changes" comment="Backup commit, minor changes.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Layer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Mnist/MnistImageViewer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Mnist/MnistImageViewer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Neuron.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Neuron.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +59,7 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\programming\java\Neuronova_sit\best neural network" />
       <recent name="D:\programming\java\Neuronova_sit\target\classes\Resources" />
       <recent name="D:\programming\java\Neuronova_sit" />
       <recent name="D:\programming\java\Neuronova_sit\src\main\resources" />
@@ -259,7 +258,21 @@
       <option name="project" value="LOCAL" />
       <updated>1701204253133</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Made learning functions private.">
+      <created>1701207249286</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1701207249286</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Backup commit, minor changes.">
+      <created>1701207352685</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1701207352685</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -289,8 +302,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Neuronova_sit" />
     </ignored-roots>
-    <MESSAGE value="a" />
-    <MESSAGE value="Test commit from IntelliJ Idea instead of from GitHub desktop" />
     <MESSAGE value="Enhanced switch replacement" />
     <MESSAGE value="Added Softmax Activation function" />
     <MESSAGE value="Added Layer Class" />
@@ -314,7 +325,9 @@
     <MESSAGE value="Removed redundant constant and spaces." />
     <MESSAGE value="Removed redundant function and spaces. Refactoring variables." />
     <MESSAGE value="Removed spaces. Refactoring variables." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed spaces. Refactoring variables." />
+    <MESSAGE value="Made learning functions private." />
+    <MESSAGE value="Backup commit, minor changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Backup commit, minor changes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

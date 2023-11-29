@@ -16,40 +16,48 @@ public class Network {
 
     public Network(String fileName) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(fileName));
-        String line = br.readLine();
+        StringBuilder s = new StringBuilder();
+        String line;
+        while((line = br.readLine())!=null){
+            s.append(line).append("\n");
+        }
+        String data = s.toString();
 
-        String[] layerInfo = line.split(";");
-        String[] firstLayerInfo = layerInfo[0].split(",");
-        String[] secondLayerInfo = layerInfo[1].split(",");
-        String[] thirdLayerInfo = layerInfo[2].split(",");
+        String[] layers = data.split(";");
+        String[] firstLayerNeurons = layers[0].split("\n");
+        String[] secondLayerNeurons = layers[1].split("\n");
+        String[] thirdLayerNeurons = layers[2].split("\n");
+
         // Load first layer
         firstLayer = new Layer(784,1);
         for (int i = 0; i < 784; i++) {
-            String[] neuronInfo = firstLayerInfo[i].split(":");
-            double weight = Double.parseDouble(neuronInfo[0]);
-            double bias = Double.parseDouble(neuronInfo[1]);
+            String[] neuronData = firstLayerNeurons[i].split(":");
+            double weight = Double.parseDouble(neuronData[0]);
+            double bias = Double.parseDouble(neuronData[1]);
             firstLayer.neurons[i].weights[0]=weight;
             firstLayer.neurons[i].bias = bias;
         }
+        
         // Load second layer
         secondLayer = new Layer(10,784);
         for (int neuron = 0; neuron < 10; neuron++) {
-            String[] neuronInfo = secondLayerInfo[neuron].split(":");
+            String[] neuronData = secondLayerNeurons[neuron].split(":");
+            String[] neuronWeights = neuronData[0].split(",");
             for (int weight = 0; weight < 784; weight++) {
-                secondLayer.neurons[neuron].weights[weight] = Double.parseDouble(neuronInfo[weight]);
+                secondLayer.neurons[neuron].weights[weight] = Double.parseDouble(neuronWeights[weight]);
             }
-            secondLayer.neurons[neuron].bias = Double.parseDouble(neuronInfo[784]);
+            secondLayer.neurons[neuron].bias = Double.parseDouble(neuronData[1]);
         }
-
-
+        
         // Load third layer
         thirdLayer = new Layer(10,10);
         for (int neuron = 0; neuron < 10; neuron++) {
-            String[] neuronInfo = thirdLayerInfo[neuron].split(":");
-            for (int j = 0; j < 10; j++) {
-                thirdLayer.neurons[neuron].weights[j] = Double.parseDouble(neuronInfo[j]);
+            String[] neuronData = thirdLayerNeurons[neuron].split(":");
+            String[] neuronWeights = neuronData[0].split(",");
+            for (int weight = 0; weight < 10; weight++) {
+                thirdLayer.neurons[neuron].weights[weight] = Double.parseDouble(neuronWeights[weight]);
             }
-            thirdLayer.neurons[neuron].bias = Double.parseDouble(neuronInfo[10]);
+            thirdLayer.neurons[neuron].bias = Double.parseDouble(neuronData[1]);
         }
         br.close();
 
