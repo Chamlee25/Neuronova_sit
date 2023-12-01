@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Neuronova_sit:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Neuronova_sit_jar</output-path>
+    <root id="archive" name="Neuronova_sit.jar">
+      <element id="module-output" name="Neuronova_sit" />
+    </root>
+  </artifact>
+</component>

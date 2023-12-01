@@ -31,7 +31,7 @@ public class Network implements Serializable{
     private void backPropError(double[] expectedData){
         //first layer error
         for(int neuron =0; neuron<10; neuron++){
-            thirdLayer.neurons[neuron].error = (thirdLayerResultData[neuron]-expectedData[neuron]) * ActivationFunction.sigmoidDerivative(thirdLayerResultData[neuron]);
+            thirdLayer.neurons[neuron].error = (thirdLayerResultData[neuron]-expectedData[neuron]) * ActivationFunction.hyperbolicTangensDerivative(thirdLayerResultData[neuron]);
         }
         //second layer error
         for(int neuron = 0; neuron<10; neuron++){
@@ -47,7 +47,7 @@ public class Network implements Serializable{
             for(int nextNeuron =0; nextNeuron<10; nextNeuron++){
                 sum += secondLayer.neurons[nextNeuron].weights[neuron] * secondLayer.neurons[nextNeuron].error;
             }
-            firstLayer.neurons[neuron].error = sum * ActivationFunction.sigmoidDerivative(firstLayerResultData[neuron]);
+            firstLayer.neurons[neuron].error = sum * ActivationFunction.hyperbolicTangens(firstLayerResultData[neuron]);
         }
     }
 

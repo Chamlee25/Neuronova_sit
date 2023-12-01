@@ -27,6 +27,16 @@ public class ActivationFunction {
         return sigmoid * (1 - sigmoid);
     }
 
+    public static double hyperbolicTangens(double x){
+        return Math.tanh(x);
+    }
+
+    public static double hyperbolicTangensDerivative(double x){
+        return 1 / Math.exp(2*x);
+    }
+
+
+
 
 
 
