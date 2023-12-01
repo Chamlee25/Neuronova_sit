@@ -1,34 +1,22 @@
 import Mnist.Mnist;
 import Mnist.MnistLoader;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
+import java.io.*;
 
 
 public class Main {
     private static double time =0;
-    public static void main(String[] args) throws IOException {
-        for(int i =0; i< 1000; i++){
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        for(int i =0; i<Integer.parseInt(args[0]); i++){
             Network n1 = new Network();
-            // train(n1);
             train(n1);
             double accuracy = test(n1);
 
             System.out.println(time);
-            save(n1,accuracy + ".net");
-
-
-            {   // get not chaning file
-                Network n2 = new Network(accuracy + ".net");
-                File f = new File(accuracy + ".net");
-                f.delete();
-                accuracy = test(n2);
-                save(n2, accuracy + ".net");
-                System.out.println(accuracy);
-            }
+            //save2(n1,accuracy + ".net");
+            System.out.println(accuracy);
         }
+
     }
 
     private static double test(Network network) throws IOException {
@@ -71,33 +59,19 @@ public class Main {
     }
 
     private static void save(Network n, String fileName) throws IOException {
-        FileWriter fw = new FileWriter(fileName);
-        StringBuilder firstLayerSB = new StringBuilder();
-        for(int i =0; i<784; i++){
-            firstLayerSB.append(n.firstLayer.neurons[i].weights[0]).append(":");
-            firstLayerSB.append(n.firstLayer.neurons[i].bias).append("\n");
-        }
-        
-        StringBuilder secondLayerSB = new StringBuilder();
-        for(int neuron =0; neuron<10; neuron++){
-            for(int weight =0; weight<784; weight++){
-                secondLayerSB.append(n.secondLayer.neurons[neuron].weights[weight]).append(",");
-            }
-            secondLayerSB.append(":").append(n.firstLayer.neurons[neuron].bias).append("\n");
-        }
-        
-        
-        StringBuilder thirdLayerSB = new StringBuilder();
-        for(int neuron =0; neuron<10; neuron++){
-            for(int weight =0; weight<10; weight++){
-                thirdLayerSB.append(n.thirdLayer.neurons[neuron].weights[weight]).append(",");
-            }
-            thirdLayerSB.append(":").append(n.thirdLayer.neurons[neuron].bias).append("\n");
-        }
-        StringBuilder sb = new StringBuilder();
-        sb.append(firstLayerSB).append(";").append(secondLayerSB).append(";").append(thirdLayerSB);
+        FileOutputStream fous = new FileOutputStream(fileName);
+        ObjectOutputStream out = new ObjectOutputStream(fous);
+        out.writeObject(n);
+        out.close();
+        fous.close();
+    }
 
-        fw.write(sb.toString());
-        fw.close();
+    private static Network load(String fileName) throws IOException, ClassNotFoundException {
+        FileInputStream fileIn = new FileInputStream(fileName);
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        Network n =  (Network) in.readObject();
+        in.close();
+        fileIn.close();
+        return n;
     }
 }

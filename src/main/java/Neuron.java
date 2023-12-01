@@ -1,4 +1,6 @@
-public class Neuron {
+import java.io.Serializable;
+
+public class Neuron implements Serializable {
     public double bias;
     public double[] weights;
     public double error;
