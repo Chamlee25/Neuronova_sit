@@ -23,7 +23,7 @@ public class Layer implements Serializable{
             result[i] = neurons[i].think(input);
         }
         for (int i =0; i<result.length;i++ ){
-            result[i] = ActivationFunction.hyperbolicTangens(result[i]);
+            result[i] = ActivationFunction.sigmoid(result[i]);
         }
         return result;
     }

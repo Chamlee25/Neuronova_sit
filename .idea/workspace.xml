@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Neuronova_sit:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49fbde37-cbf5-4bae-a4b9-ae71ab61f2c3" name="Changes" comment="Saving system v3. Completely working.">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Neuronova_sit_jar.xml" afterDir="false" />
+    <list default="true" id="49fbde37-cbf5-4bae-a4b9-ae71ab61f2c3" name="Changes" comment="Added hyperbolic tangens learning. Not very effective.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ActivationFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ActivationFunction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Layer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Layer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Network.java" afterDir="false" />
@@ -52,7 +55,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "project.structure.last.edited": "Artifacts",
+    "last_opened_file_path": "D:/programming/java/Neuronova_sit/out/artifacts/Neuronova_sit_jar/src/main",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.sourceCode.Java"
@@ -61,6 +65,9 @@
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\programming\java\Neuronova_sit\out\artifacts\Neuronova_sit_jar\src\main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\programming\java\Neuronova_sit\best neural network" />
@@ -73,7 +80,7 @@
     <configuration name="Application" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Neuronova_sit" />
-      <option name="PROGRAM_PARAMETERS" value="20" />
+      <option name="PROGRAM_PARAMETERS" value="10" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -291,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701462732995</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Added hyperbolic tangens learning. Not very effective.">
+      <created>1701465264342</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1701465264342</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -321,7 +335,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Neuronova_sit" />
     </ignored-roots>
-    <MESSAGE value="Added Layer Class" />
     <MESSAGE value="Added system for softmax activation" />
     <MESSAGE value="Idk co se tu změnilo, já to nebyl, to byla IDEA" />
     <MESSAGE value="Added Network class with Network constructor" />
@@ -346,7 +359,8 @@
     <MESSAGE value="Backup commit, minor changes." />
     <MESSAGE value="Reworked saving system" />
     <MESSAGE value="Saving system v3. Completely working." />
-    <option name="LAST_COMMIT_MESSAGE" value="Saving system v3. Completely working." />
+    <MESSAGE value="Added hyperbolic tangens learning. Not very effective." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added hyperbolic tangens learning. Not very effective." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

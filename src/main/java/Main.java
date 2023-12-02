@@ -9,17 +9,17 @@ public class Main {
     public static void main(String[] args) throws IOException {
         for(int i =0; i<Integer.parseInt(args[0]); i++){
             Network n1 = new Network();
-            train(n1);
             //Mnist m = new MnistLoader(0).getNextMnist();
             //n1.learn(m.data,m.actualValues,0.01);
+            train(n1);
             double accuracy = test(n1);
             System.out.println(time);
-            save(n1,accuracy + ".net");
+            save(n1,accuracy + ".sig");
             System.out.println(accuracy);
-            double[] a = n1.predict(new MnistLoader(1).getNextMnist().data);
+            /*double[] a = n1.predict(new MnistLoader(1).getNextMnist().data);
             for(int j =0; j<10; j++){
                 System.out.println(a[j]);
-            }
+            }*/
         }
 
     }
@@ -44,7 +44,7 @@ public class Main {
         double start = System.currentTimeMillis();
         for(int i =0; i<60000; i++){
             Mnist m = trainer.getNextMnist();
-            n.learn(m.data,m.actualValues,0.0001);
+            n.learn(m.data,m.actualValues,0.01);
         }
 
 
